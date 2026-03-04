@@ -14,7 +14,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn exec:java -Dexec.mainClass="com.example.App"'  // Run Maven build
+                sh 'mvn build'  // Run Maven build
             }
         }
 
@@ -30,7 +30,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 // Start the JAR application
-                sh 'java -jar target/2023mavenlistapps-1.0-SNAPSHOT.jar'
+                sh 'exec:java -Dexec.mainClass="com.example.App"'
             }
         }
 
